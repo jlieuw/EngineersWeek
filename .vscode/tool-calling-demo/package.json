@@ -20,8 +20,29 @@
         ],
         "toolReferenceName": "callWeatherApi",
         "displayName": "Call Weather API",
-        "modelDescription": "Call the weather API to get the forecast for the next couple of days.",
+        "modelDescription": "Gets the weather forecast. Call an API to get the weather forecast of the coming days.",
         "canBeReferencedInPrompt": true
+      },
+      {
+        "name": "chat-tools-wiki-search",
+        "tags": [
+          "editors",
+          "chat-tools-wiki-search"
+        ],
+        "toolReferenceName": "wikiSearch",
+        "displayName": "Wiki search",
+        "modelDescription": "Searches a local wiki for text and returns the most relevant result.",
+        "canBeReferencedInPrompt": true,
+				"inputSchema": {
+					"type": "object",
+					"properties": {
+						"searchInput": {
+							"type": "string",
+							"description": "The search input to find the most relevant wiki articles.",
+							"default": 0
+						}
+					}
+				}
       }
     ]
   },
@@ -37,7 +58,8 @@
     "@types/axios": "^0.9.36",
     "@types/mocha": "^10.0.10",
     "@types/node": "20.x",
-    "@types/vscode": "^1.99.0",
+    "@types/pg": "^8.11.12",
+    "@types/vscode": "^1.99.1",
     "@typescript-eslint/eslint-plugin": "^8.28.0",
     "@typescript-eslint/parser": "^8.28.0",
     "@vscode/test-cli": "^0.0.10",
@@ -46,6 +68,7 @@
     "typescript": "^5.8.2"
   },
   "dependencies": {
-    "axios": "^1.8.4"
+    "axios": "^1.8.4",
+    "pg": "^8.14.1"
   }
 }
