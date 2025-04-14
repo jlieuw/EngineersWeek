@@ -1,0 +1,32 @@
+CREATE TABLE users (
+    id UUID PRIMARY KEY,
+    username VARCHAR(50) NOT NULL,
+    email VARCHAR(100) NOT NULL UNIQUE,
+    created_at TIMESTAMP NOT NULL
+);
+
+CREATE TABLE projects (
+    id UUID PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    description TEXT,
+    created_at TIMESTAMP NOT NULL
+);
+
+CREATE TABLE issues (
+    id UUID PRIMARY KEY,
+    project_id UUID REFERENCES projects(id),
+    title VARCHAR(150) NOT NULL,
+    description TEXT,
+    status VARCHAR(20) NOT NULL,
+    assigned_user_id UUID REFERENCES users(id),
+    created_at TIMESTAMP NOT NULL,
+    updated_at TIMESTAMP NOT NULL
+);
+
+CREATE TABLE comments (
+    id UUID PRIMARY KEY,
+    issue_id UUID REFERENCES issues(id),
+    user_id UUID REFERENCES users(id),
+    comment TEXT NOT NULL,
+    created_at TIMESTAMP NOT NULL
+);
