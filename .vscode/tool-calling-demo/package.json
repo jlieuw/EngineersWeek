@@ -33,16 +33,16 @@
         "displayName": "Wiki search",
         "modelDescription": "Searches a local wiki for text and returns the most relevant result.",
         "canBeReferencedInPrompt": true,
-				"inputSchema": {
-					"type": "object",
-					"properties": {
-						"searchInput": {
-							"type": "string",
-							"description": "The search input to find the most relevant wiki articles.",
-							"default": 0
-						}
-					}
-				}
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "searchInput": {
+              "type": "string",
+              "description": "The search input to find the most relevant wiki articles.",
+              "default": 0
+            }
+          }
+        }
       }
     ]
   },
@@ -58,7 +58,7 @@
     "@types/axios": "^0.9.36",
     "@types/mocha": "^10.0.10",
     "@types/node": "20.x",
-    "@types/pg": "^8.11.12",
+    "@types/pg": "^8.11.13",
     "@types/vscode": "^1.99.1",
     "@typescript-eslint/eslint-plugin": "^8.28.0",
     "@typescript-eslint/parser": "^8.28.0",
