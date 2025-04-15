@@ -24,6 +24,17 @@ export function activate(context: vscode.ExtensionContext) {
 
 		messages.push(new vscode.LanguageModelChatMessage(vscode.LanguageModelChatMessageRole.User, userQuery));
 
+		// --- Example of selecting a model ---
+
+		// const lm = await vscode.lm.selectChatModels({ 'vendor': 'copilot', 'version': 'gpt-4' });
+		// if (!lm) {
+		// 	stream.markdown('Sorry, I couldn\'t complete that request.');
+		// 	return;
+		// }
+
+		// lm[0].sendRequest(messages, {}, token);
+		
+		// --- End example of selecting a model ---
 
 		// send the request
 		const chatResponse = await request.model.sendRequest(messages, {}, token);
