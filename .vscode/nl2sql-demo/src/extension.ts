@@ -10,32 +10,20 @@ export function activate(context: vscode.ExtensionContext) {
 
 	// define a chat handler
 	const handler: vscode.ChatRequestHandler = async (request: vscode.ChatRequest, context: vscode.ChatContext, stream: vscode.ChatResponseStream, token: vscode.CancellationToken) => {
-		
+		const userQuery = request.prompt;
+
 		stream.progress('Reading database context...');
 		
-		const { messages } = await renderPrompt(
+		let { messages } = await renderPrompt(
 			Nl2SqlPrompt,
 			{ userQuery: request.prompt },
 			{ modelMaxPromptTokens: request.model.maxInputTokens },
 			request.model);
 
-		// get all the previous participant messages
-		const previousMessages = context.history.filter(
-			(h) => h instanceof vscode.ChatResponseTurn
-		);
+		// let dbContext = await getDatabaseContext();
 
-		// add the previous messages to the messages array
-		previousMessages.forEach((m) => {
-			let fullMessage = '';
-			m.response.forEach((r) => {
-				const mdPart = r as vscode.ChatResponseMarkdownPart;
-				fullMessage += mdPart.value.value;
-			});
-			messages.push(vscode.LanguageModelChatMessage.Assistant(fullMessage));
-		});
+		messages.push(new vscode.LanguageModelChatMessage(vscode.LanguageModelChatMessageRole.User, userQuery));
 
-		// add in the user's message
-		messages.push(vscode.LanguageModelChatMessage.User(request.prompt));
 
 		// send the request
 		const chatResponse = await request.model.sendRequest(messages, {}, token);
