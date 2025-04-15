@@ -20,7 +20,7 @@
         ],
         "toolReferenceName": "callWeatherApi",
         "displayName": "Call Weather API",
-        "modelDescription": "Gets the weather forecast. Call an API to get the weather forecast of the coming days.",
+        "modelDescription": "Gets the weather forecast. Call an API to get the weather forecast of the coming days. Can tell you what the weather will be like tomorrow or coming days.",
         "canBeReferencedInPrompt": true
       },
       {
@@ -31,7 +31,7 @@
         ],
         "toolReferenceName": "wikiSearch",
         "displayName": "Wiki search",
-        "modelDescription": "Searches a local wiki for text and returns the most relevant result.",
+        "modelDescription": "Searches a local wiki for information on any topic and provides the most relevant result. Useful for answering general knowledge questions, clarifying terms, or finding detailed explanations.",
         "canBeReferencedInPrompt": true,
         "inputSchema": {
           "type": "object",
